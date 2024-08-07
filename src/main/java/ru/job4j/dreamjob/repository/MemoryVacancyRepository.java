@@ -2,6 +2,7 @@ package ru.job4j.dreamjob.repository;
 
 import ru.job4j.dreamjob.model.Vacancy;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class MemoryVacancyRepository implements VacancyRepository {
@@ -13,12 +14,12 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final Map<Integer, Vacancy> vacancies = new HashMap<>();
 
     private MemoryVacancyRepository() {
-        save(new Vacancy(0, "Intern Java Developer", "description1", new Date()));
-        save(new Vacancy(0, "Junior Java Developer", "description1", new Date()));
-        save(new Vacancy(0, "Junior+ Java Developer", "description1", new Date()));
-        save(new Vacancy(0, "Middle Java Developer", "description1", new Date()));
-        save(new Vacancy(0, "Middle+ Java Developer", "description1", new Date()));
-        save(new Vacancy(0, "Senior Java Developer", "description1", new Date()));
+        save(new Vacancy(0, "Intern Java Developer", "description1", LocalDateTime.now()));
+        save(new Vacancy(0, "Junior Java Developer", "description1", LocalDateTime.now()));
+        save(new Vacancy(0, "Junior+ Java Developer", "description1", LocalDateTime.now()));
+        save(new Vacancy(0, "Middle Java Developer", "description1", LocalDateTime.now()));
+        save(new Vacancy(0, "Middle+ Java Developer", "description1", LocalDateTime.now()));
+        save(new Vacancy(0, "Senior Java Developer", "description1", LocalDateTime.now()));
     }
 
     public static MemoryVacancyRepository getInstance() {
