@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.model;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Vacancy {
@@ -8,9 +9,15 @@ public class Vacancy {
 
     private String title;
 
-    public Vacancy(int id, String title) {
+    private String description;
+
+    private Date creationDate;
+
+    public Vacancy(int id, String title, String description, Date creationDate) {
         this.id = id;
         this.title = title;
+        this.description = description;
+        this.creationDate = creationDate;
     }
 
     public int getId() {
@@ -27,6 +34,22 @@ public class Vacancy {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
     @Override
