@@ -1,9 +1,8 @@
 package ru.job4j.dreamjob.repository;
 
 import ru.job4j.dreamjob.model.Candidate;
-import ru.job4j.dreamjob.model.Vacancy;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class MemoryCandidateRepository implements CandidateRepository {
@@ -15,11 +14,11 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final Map<Integer, Candidate> candidates = new HashMap<>();
 
     private MemoryCandidateRepository() {
-        save(new Candidate(0, "Candidate 1", "description1", new Date()));
-        save(new Candidate(0, "Candidate 2", "description2", new Date()));
-        save(new Candidate(0, "Candidate 3", "description3", new Date()));
-        save(new Candidate(0, "Candidate 4", "description4", new Date()));
-        save(new Candidate(0, "Candidate 5", "description5", new Date()));
+        save(new Candidate(0, "Candidate 1", "description1", LocalDateTime.now()));
+        save(new Candidate(0, "Candidate 2", "description2", LocalDateTime.now()));
+        save(new Candidate(0, "Candidate 3", "description3", LocalDateTime.now()));
+        save(new Candidate(0, "Candidate 4", "description4", LocalDateTime.now()));
+        save(new Candidate(0, "Candidate 5", "description5", LocalDateTime.now()));
 
     }
 
@@ -35,8 +34,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
     }
 
     @Override
-    public void deleteById(int id) {
-        candidates.remove(id);
+    public boolean deleteById(int id) {
+         return candidates.remove(id) != null;
     }
 
     @Override
