@@ -3,9 +3,11 @@ package ru.job4j.dreamjob.repository;
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Candidate;
 
+import javax.annotation.concurrent.ThreadSafe;
 import java.time.LocalDateTime;
 import java.util.*;
 
+@ThreadSafe
 @Repository
 public class MemoryCandidateRepository implements CandidateRepository {
 
