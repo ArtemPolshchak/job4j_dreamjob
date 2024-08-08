@@ -16,11 +16,11 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final Map<Integer, Candidate> candidates = new HashMap<>();
 
     private MemoryCandidateRepository() {
-        save(new Candidate(0, "Candidate 1", "description1", LocalDateTime.now(), false, 1));
-        save(new Candidate(0, "Candidate 2", "description2", LocalDateTime.now(), false, 1));
-        save(new Candidate(0, "Candidate 3", "description3", LocalDateTime.now(), false, 1));
-        save(new Candidate(0, "Candidate 4", "description4", LocalDateTime.now(), false, 1));
-        save(new Candidate(0, "Candidate 5", "description5", LocalDateTime.now(), false, 1));
+        save(new Candidate(0, "Candidate 1", "description1", LocalDateTime.now(), false, 1, 0));
+        save(new Candidate(0, "Candidate 2", "description2", LocalDateTime.now(), false, 1, 0));
+        save(new Candidate(0, "Candidate 3", "description3", LocalDateTime.now(), false, 1, 0));
+        save(new Candidate(0, "Candidate 4", "description4", LocalDateTime.now(), false, 1, 0));
+        save(new Candidate(0, "Candidate 5", "description5", LocalDateTime.now(), false, 1, 0));
 
     }
 
@@ -38,13 +38,12 @@ public class MemoryCandidateRepository implements CandidateRepository {
 
     @Override
     public boolean update(Candidate candidate) {
-        return candidates.computeIfPresent(candidate.getId(),
-                (id, oldCandidate) -> new Candidate(oldCandidate.getId(),
-                        candidate.getName(),
-                        candidate.getDescription(),
-                        candidate.getCreationDate(),
-                        candidate.getVisible(),
-                        candidate.getCityId())) != null;
+        return candidates.computeIfPresent(candidate.getId(), (id, oldVacancy) -> {
+            return new Candidate(
+                    oldVacancy.getId(), candidate.getName(), candidate.getDescription(),
+                    candidate.getCreationDate(), candidate.getVisible(), candidate.getCityId(), candidate.getFileId()
+            );
+        }) != null;
     }
 
     @Override
