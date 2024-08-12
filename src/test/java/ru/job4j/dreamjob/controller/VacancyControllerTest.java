@@ -148,7 +148,7 @@ class VacancyControllerTest {
     }
 
     @Test
-    public void whenUpdateVacancyThenRedirectToVacanciesPage () throws Exception {
+    public void whenUpdateVacancyThenRedirectToVacanciesPage() throws Exception {
         var vacancy = new Vacancy(1, "test1", "desc1", now(), true, 1, 2);
 
         var fileDto = new FileDto(testFile.getOriginalFilename(), testFile.getBytes());
